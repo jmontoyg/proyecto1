@@ -1,0 +1,199 @@
+{% extends 'barberia/front.html' %}
+{% load static %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block contenedor %}
+<!-- start slider section -->
+<div class="{% if messages %}slider_mensaje{% else %}slider_section{% endif%}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="slider_cont">
+                                <h3>Deja que tu corte<br>Hable por ti</h3>
+                                <p>Nuestra mejor propina es verte satisfecho con nuestro trabajo.</p>
+                                <a class="main_bt_border" href="{% url 'barberia:reservar'%}">Agenda tu cita!</a>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="slider_image full text_align_center">
+                                <img class="img-responsive" src="{% static 'barberia/images/logo_slide.png' %}"
+                                    alt="#" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end slider section -->
+
+    <!-- section -->
+    <section class="resip_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ourheading">
+                        <h2>Nuestros servicios</h2>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="owl-carousel owl-theme">
+
+                                {% for registro in dato %}
+                                {% if registro.tipo == '0' %}
+
+                                <div class="item">
+                                    <div class="product_blog_img">
+                                        <img src="{{ registro.foto.url }}" alt="{{ registro.detalle }}" />
+                                    </div>
+                                    <div class="product_blog_cont">
+                                        <h3>{{ registro.detalle }}</h3>
+                                        <h4><span class="theme_color">$</span>{{ registro.valor }}</h4>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="bg_bg">
+        <!-- about -->
+        <div class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title">
+                            <i><img src="{% static 'barberia/images/title.png' %}" alt="#" /></i>
+                            <h2>Nuestra Barbería</h2>
+                            <span>La profesionalidad, la elegancia, la cortesía y la gratitud con cada uno de nuestros
+                                clientes
+                                <br> son nuestras principales virtudes.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="about_box">
+                            <h3>Bienvenido a Luxury Barber Shop</h3>
+                            <p>La Barbería Luxury, refleja lo que tu quieres ser HOY, un Hombre de Grandeza. Somos un
+                                espacio contemporáneo masculino, donde entendemos las inquietudes del hombre de hoy para
+                                ofrecer una imagen actual y el estilo que mejor refleja su personalidad, Luxury esta
+                                formado por un equipo de barberos con formación profesional de alta calidad.</p>
+                            <a href="{% url 'barberia:nosotros'%}">Leer más <i class="fa fa-long-arrow-right"
+                                    aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-10 col-sm-12 about_img_boxpdnt">
+                        <div class="about_img">
+                            <figure><img src="{% static 'barberia/images/about-img.jpg' %}" alt="#/"></figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end about -->
+
+        <!-- blog -->
+        <div class="blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title">
+                            <i><img src="{% static 'barberia/images/title.png' %}" alt="#" /></i>
+                            <h2>Productos</h2>
+                            <span>Belleza y cuidado personal</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
+                        <div class="blog_box">
+                            <div class="blog_img_box">
+                                <figure><img src="{% static 'barberia/images/blog_img1.png' %}" alt="#" />
+
+                                </figure>
+                            </div>
+                            <h3>Cera Capilar</h3>
+                            <p>La cera para el pelo, también conocida como cera modeladora, le da una apariencia natural
+                                y brillante, pero sutil, al pelo. Proporciona una fijación baja a media que controla el
+                                pelo suelto, pero es ligera y no hace que el pelo se aplane. En pocas palabras, se
+                                deshace del frizz sin dejarlo grasoso. </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
+                        <div class="blog_box">
+                            <div class="blog_img_box">
+                                <figure><img src="{% static 'barberia/images/blog_img2.png' %}" alt="#" />
+
+                                </figure>
+                            </div>
+                            <h3>Aceite de Coco</h3>
+                            <p>El aceite de coco es conocido por sus propiedades hidratantes y nutritivas, además aporta
+                                brillo y suavidad, sin dejar el pelo graso. Por otra parte, también protege la fibra
+                                capilar evitando la rotura del cabello y aportándole fuerza.</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="blog_box">
+                            <div class="blog_img_box">
+                                <figure><img src="{% static 'barberia/images/blog_img3.png' %}" alt="#" />
+
+                                </figure>
+                            </div>
+                            <h3>Shampoo</h3>
+                            <p>El champú es un producto que se utiliza para la limpieza y cuidado del pelo o cabello. El
+                                objetivo de utilizar el champú es eliminar la acumulación no deseada de sebo para hacer
+                                el pelo manejable.</p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <a class="boton_productos" href="{% url 'barberia:productos'%}">Ver todos los productos....</a>
+            </div>
+
+        </div>
+        <!-- end blog -->
+
+        <!-- Our Client -->
+        <div class="Client">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title">
+                            <i><img src="{% static 'barberia/images/title.png' %}" alt="#" /></i>
+                            <h2>Nuestros Clientes</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="Client_box">
+                            <img src="{% static 'barberia/images/client.jpg' %}" alt="#" />
+                            <h3>Cristiano Ronaldo</h3>
+                            <p>Conocido como uno de los mejores jugadores del mundo (para muchos lo será), Cristiano
+                                Ronaldo no sólo destaca sobre el terreno de juego por su manera de lanzar o de marcar
+                                goles, también su aspecto da que hablar, y sobre todo sus cortes de pelo.</p>
+                            <i><img src="{% static 'barberia/images/client_icon.png' %}" alt="#" /></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end Our Client -->
+    </div>
+
+    {% endblock %}

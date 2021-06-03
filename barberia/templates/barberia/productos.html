@@ -1,0 +1,80 @@
+{% extends 'barberia/front.html' %}
+{% load static %}
+
+{% block titulo %} Productos {% endblock %}
+
+{% block contenedor %}
+
+<div class="yellow_bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title">
+          <h2>Productos</h2>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- blog -->
+<div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title">
+          <i><img src="{% static 'barberia/images/title.png' %}" alt="#" /></i> <br><br><br>                   
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      {% for registro in dato %}
+      {% if registro.tipo == '1' %}
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
+          <div class="blog_box_productos">
+              <div class="blog_img_box">
+                  <figure><img src="{{ registro.foto.url }}" alt="{{ registro.detalle }}" />
+
+                  </figure>
+              </div>
+              <h3>{{ registro.detalle }}</h3>
+              <p> $ {{ registro.valor }} </p>
+              
+          </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <!--<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
+          <div class="blog_box">
+              <div class="blog_img_box">
+                  <figure><img src="{% static 'barberia/images/blog_img2.png' %}" alt="#" />
+
+                  </figure>
+              </div>
+              <h3>Aceite de Coco</h3>
+              <p>El aceite de coco es conocido por sus propiedades hidratantes y nutritivas, además aporta
+                  brillo y suavidad, sin dejar el pelo graso. Por otra parte, también protege la fibra
+                  capilar evitando la rotura del cabello y aportándole fuerza. <br><br><br> </p>
+          </div>
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+          <div class="blog_box">
+              <div class="blog_img_box">
+                  <figure><img src="{% static 'barberia/images/blog_img3.png' %}" alt="#" />
+
+                  </figure>
+              </div>
+              <h3>Shampoo</h3>
+              <p>El champú es un producto que se utiliza para la limpieza y cuidado del pelo o cabello. El
+                  objetivo de utilizar el champú es eliminar la acumulación no deseada de sebo para hacer
+                  el pelo manejable. <br><br><br><br></p>
+          </div>
+      </div> -->
+  </div>
+  </div>
+</div>
+<!-- end blog -->
+
+{% endblock %}

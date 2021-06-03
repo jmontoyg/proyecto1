@@ -1,0 +1,64 @@
+{% extends 'barberia/front.html' %}
+{% load static %}
+
+{% block titulo %} Nuestra Barbería {% endblock %}
+
+{% block contenedor %}
+
+<div class="yellow_bg">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="title">
+               <h2>Nuestra Barbería</h2>
+
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- about -->
+<div class="about">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="title">
+               <i><img src="{% static 'barberia/images/title.png' %}" alt="#" /></i> <br><br>
+
+               <span>La profesionalidad, la elegancia, la cortesía y la gratitud con cada uno de nuestros
+                  clientes
+                  <br> son nuestras principales virtudes.
+               </span>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="about_box">
+               <h3>Bienvenido a Luxury Barber Shop</h3>
+               <p>La Barbería Luxury, refleja lo que tu quieres ser HOY, un Hombre de Grandeza. Somos un
+                  espacio contemporáneo masculino, donde entendemos las inquietudes del hombre de hoy para
+                  ofrecer una imagen actual y el estilo que mejor refleja su personalidad, Luxury esta
+                  formado por un equipo de barberos con formación profesional de alta calidad.
+                  <br> <br> Un espacio donde el cliente que nos visita vive una nueva experiencia de bienestar y
+                  convierte su
+                  visita en un momento que todo hombre debe dedicarse. <br> <br> ​
+                  Todo esto con las técnicas y tratamientos más novedosos mezclados con un trato exquisito y realzando
+                  el estilo personal del cliente. <br> <br>
+                  La profesionalidad, la elegancia, la cortesía y la gratitud con cada uno de nuestros clientes son
+                  nuestras principales virtudes.
+               </p>
+            </div>
+         </div>
+         <div class="col-xl-5 col-lg-5 col-md-10 col-sm-12 about_img_boxpdnt">
+            <div class="about_img_nosotros">
+               <figure><img src="{% static 'barberia/images/about-img.jpg' %}" alt="#/"></figure>
+               <figure><img src="{% static 'barberia/images/about-img2.png' %}" alt="#/"></figure>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- end about -->
+
+{% endblock %}

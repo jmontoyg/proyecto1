@@ -1,0 +1,78 @@
+{% extends 'barberia/front.html' %}
+{% load static %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block contenedor %}
+
+{% if not messages %}
+
+<div class="container_config">
+
+  {% endif %}
+
+  <div class="container-fluid">
+
+    {% if request.session.login.1 == '1'%}
+
+    <a class="btn btn-info" href="{% url 'barberia:crear_reserva' %}" role="button">Nueva Reserva</a><br><br>
+
+    {% endif%}
+
+    {% if datosReservas %}
+
+    <table class="table table-striped table-bordered">
+
+      <tr>
+        <th>Fecha y Hora de Reserva</th>
+        <th>Cliente</th>
+        <th>Barbero</th>
+        <th>Servicio</th>
+        {% if request.session.login.1 == '1'%}
+        <th>Acciones</th>
+        {% endif %}
+      </tr>
+      {% for registroReservas in datosReservas %}
+
+      <tr>
+        <td>{{ registroReservas.fechaHoraReserva}}</td>
+        <td>{{ registroReservas.idUsuario}}</td>
+        <td>{{ registroReservas.idBarbero}}</td>
+        <td>{{ registroReservas.idCatalogo}}</td>
+        {% if request.session.login.1 == '1'%}
+        <td>
+          <a class="btn btn-warning" href="{% url 'barberia:formulario_editar_reserva' registroReservas.idReserva %}"
+            role="button">Editar</a>
+          <a class="btn btn-danger"
+            href="javascript:eliminarRegistro('{% url 'barberia:eliminar_reserva' registroReservas.idReserva %}')"
+            role="button">Eliminar</a>
+        </td>
+        {% endif %}
+      </tr>
+
+      {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    Aun no hay datos
+
+    {% endif %}
+
+  </div>
+
+</div>
+<div class="container_config">
+  <div class="col-md-12">
+    <ul class="lik">
+      <li> <a href="{% url 'barberia:index'%}">Inicio</a></li>
+      <li> <a href="{% url 'barberia:usuarios'%}">Usuarios</a></li>
+      <li> <a href="{% url 'barberia:barberos'%}">Barberos</a></li>
+      <li> <a href="{% url 'barberia:catalogo'%}">Catalogo</a></li>
+      <li> <a href="{% url 'barberia:reservas'%}">Reservas</a></li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

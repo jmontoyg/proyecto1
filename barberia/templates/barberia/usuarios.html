@@ -1,0 +1,78 @@
+{% extends 'barberia/front.html' %}
+{% load static %}
+
+{% block titulo %} Usuarios {% endblock %}
+
+{% block contenedor %}
+
+
+<div class="{% if not messages %}container_config{%else%}container_config_mensajes{% endif %}">
+
+  <div class="container-fluid">
+
+    {% if request.session.login.1 == '1'%}
+    <a class="btn btn-info" href="{% url 'barberia:crear_usuario' %}" role="button">Crear Usuario</a><br><br>
+    {% endif %}
+
+    {% if datosUsuarios %}
+
+    <table class="table table-striped table-bordered">
+
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Contraseña</th>
+        <th>Celular</th>
+        <th>Rol</th>
+        {% if request.session.login.1 == '1'%}
+        <th>Acciones</th>
+        {% endif %}
+      </tr>
+      {% for registro in datosUsuarios %}
+
+      <tr>
+        <td>{{ registro.nombre}}</td>
+        <td>{{ registro.correo}}</td>
+        <td>{{ registro.contrasena}}</td>
+        <td>{{ registro.celular}}</td>
+        <td>{{ registro.get_rol_display}}</td>
+        {% if request.session.login.1 == '1'%}
+        <td>
+          <a class="btn btn-warning" href="{% url 'barberia:formulario_editar_usuario' registro.idUsuario %}"
+            role="button">Editar</a>
+          <a class="btn btn-danger"
+            href="javascript:eliminarRegistro('{% url 'barberia:eliminar_usuario' registro.idUsuario %}')"
+            role="button">Eliminar</a>
+
+        </td>
+        {% endif %}
+      </tr>
+
+      {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    Aun no hay datos
+
+    {% endif %}
+
+
+
+  </div>
+
+</div>
+<div class="container_config">
+  <div class="col-md-12">
+    <ul class="lik">
+      <li> <a href="{% url 'barberia:index'%}">Inicio</a></li>
+      <li> <a href="{% url 'barberia:usuarios'%}">Usuarios</a></li>
+      <li> <a href="{% url 'barberia:barberos'%}">Barberos</a></li>
+      <li> <a href="{% url 'barberia:catalogo'%}">Catalogo</a></li>
+      <li> <a href="{% url 'barberia:reservas'%}">Reservas</a></li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
